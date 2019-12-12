@@ -1,0 +1,216 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "123",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "username": "dobleh",
+      "password": "1234",
+      "role": "user"
+    },
+    {
+      "id": 3,
+      "username": "jamal",
+      "password": "1234",
+      "role": "admin"
+    }
+  ],
+  "studios": [
+    {
+      "id": 1,
+      "nama": "Studio 1",
+      "jumlahKursi": 260
+    },
+    {
+      "id": 2,
+      "nama": "Studio 2",
+      "jumlahKursi": 240
+    },
+    {
+      "id": 3,
+      "nama": "Studio 3",
+      "jumlahKursi": 200
+    }
+  ],
+  "movies": [
+    {
+      "title": "Jumanji: The Next Level",
+      "image": "https://media.21cineplex.com/webcontent/gallery/pictures/157422945871583_287x421.jpg",
+      "sinopsis": "Dwayne Johnson, Karen Gillan, Jack Black dan Kevin Hart kembali ke Jumanji, keempatnya harus menyelamatkan salah satu teman mereka. Namun permainan telah berubah. Para pemain kini harus lebih berani melintasi rintangan ekstrem dan kembali dengan selamat dari permainan paling berbahaya di dunia.",
+      "sutradara": "Jake Kasdan",
+      "genre": "Action",
+      "durasi": "121",
+      "produksi": "RANS ENTERTAINMENT",
+      "jadwal": [
+        12,
+        14
+      ],
+      "trailer": "https://www.youtube.com/embed/rBxcF-r9Ibs",
+      "studioId": "1",
+      "id": 1
+    },
+    {
+      "title": "Last Christmas",
+      "image": "https://media.21cineplex.com/webcontent/gallery/pictures/157285280844221_287x421.jpg",
+      "sinopsis": "Kate (Emilia Clarke) adalah seorang wanita muda yang mengambil keputusan buruk. Kencan terakhirnya berakhir dengan bencana? Saat diterima di sebuah toko pernak-pernik natal dan berperan sebagai Peri ia bertemu dengan Tom (Henry Golding), Hidupnya berubah lagi. Bagi Kate, sepertinya terlalu bagus untuk menjadi kenyataan.",
+      "sutradara": "Paul Feig",
+      "genre": "Romance",
+      "durasi": "103",
+      "produksi": "RANS ENTERTAINMENT",
+      "jadwal": [
+        14,
+        16,
+        20
+      ],
+      "trailer": "https://www.youtube.com/embed/z9CEIcmWmtA",
+      "studioId": "2",
+      "id": 2
+    },
+    {
+      "title": "The Best Way to Walk",
+      "image": "https://img.yts.lt/assets/images/movies/the_best_way_to_walk_1976/medium-cover.jpg",
+      "sinopsis": "In a vacation camp somewhere in the French country, 1960. Marc et Philippe are two of the counsellors. Marc is very virile, while Philippe is more reserved. A night, Marc surprises Philippe dressed and made-up like a woman. From now on, he will keep on humiliating Philippe...",
+      "sutradara": "Claude Miller",
+      "genre": "Action",
+      "durasi": "120",
+      "produksi": "RANS ENTERTAINMENT",
+      "jadwal": [
+        16,
+        20
+      ],
+      "trailer": "https://www.youtube.com/embed/0-nsSw-TI5Y",
+      "studioId": "3",
+      "id": 4
+    },
+    {
+      "title": "Nacho Libre",
+      "image": "https://img.yts.lt/assets/images/movies/nacho_libre_2006/medium-cover.jpg",
+      "sinopsis": "Nacho (Black) is a monastery cook, who spends his day feeding orphans and being overlooked by the monastery. When Sister Encarnación (Reguera) arrive at the monastery, Nacho realises that the only way to win her affection and to save the children, will be by competing as a Luchador wrestler.",
+      "sutradara": "Jared Hess",
+      "genre": "Comedy",
+      "durasi": "120",
+      "produksi": "RANS ENTERTAINMENT",
+      "jadwal": [
+        16,
+        18
+      ],
+      "trailer": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/btfjTl7sEIg\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>",
+      "studioId": "1",
+      "id": 5
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "userId": 2,
+      "movieId": 3,
+      "jadwal": 12,
+      "totalHarga": 50000,
+      "bayar": false
+    },
+    {
+      "userId": 3,
+      "movieId": 3,
+      "jadwal": 12,
+      "totalHarga": 50000,
+      "id": 2,
+      "bayar": false
+    },
+    {
+      "userId": 2,
+      "movieId": 3,
+      "jadwal": 14,
+      "totalHarga": 50000,
+      "id": 3,
+      "bayar": false
+    },
+    {
+      "userId": 3,
+      "movieId": 1,
+      "totalharga": 50000,
+      "jadwal": 12,
+      "bayar": false,
+      "id": 4
+    },
+    {
+      "userId": 2,
+      "movieId": 2,
+      "totalharga": 75000,
+      "jadwal": 12,
+      "bayar": false,
+      "id": 5
+    }
+  ],
+  "ordersDetails": [
+    {
+      "id": 1,
+      "orderId": 1,
+      "row": 2,
+      "seat": 4
+    },
+    {
+      "id": 2,
+      "orderId": 1,
+      "row": 2,
+      "seat": 5
+    },
+    {
+      "id": 3,
+      "orderId": 2,
+      "row": 2,
+      "seat": 6
+    },
+    {
+      "id": 4,
+      "orderId": 2,
+      "row": 2,
+      "seat": 7
+    },
+    {
+      "id": 5,
+      "orderId": 3,
+      "row": 2,
+      "seat": 8
+    },
+    {
+      "id": 6,
+      "orderId": 3,
+      "row": 2,
+      "seat": 9
+    },
+    {
+      "orderId": 4,
+      "seat": 8,
+      "row": 1,
+      "id": 7
+    },
+    {
+      "orderId": 4,
+      "seat": 8,
+      "row": 2,
+      "id": 8
+    },
+    {
+      "orderId": 5,
+      "seat": 5,
+      "row": 3,
+      "id": 9
+    },
+    {
+      "orderId": 5,
+      "seat": 7,
+      "row": 1,
+      "id": 10
+    },
+    {
+      "orderId": 5,
+      "seat": 7,
+      "row": 2,
+      "id": 11
+    }
+  ]
+}

@@ -1,7 +1,5 @@
-import { stat } from "fs"
-
 const INITIAL_STATE = {
-    id: '',
+    id: 0,
     username: '',
     password: '',
     login: false,

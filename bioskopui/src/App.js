@@ -12,7 +12,9 @@ import { APIURL } from './support/apiurl';
 import movieDetail from './pages/movie-details';
 import Loader from 'react-loader-spinner'
 import Belitiket from './pages/belitiket'
-
+import Register from './pages/register';
+import Cart from './pages/cart';
+import Notfound from './pages/notfound';
 
 class App extends Component {
   state = {
@@ -27,8 +29,10 @@ class App extends Component {
         // this.setState({ loading: false })
       }).catch((err) => {
         console.log(err)
+      }).finally(() => {
+        this.setState({ loading: false })
       })
-    this.setState({ loading: false })
+
   }
 
 
@@ -54,6 +58,9 @@ class App extends Component {
           <Route path='/moviedetail/:id' exact component={movieDetail} />
           <Route path='/belitiket' exact component={Belitiket} />
           <Route path={'/login'} exact component={Login} />
+          <Route path='/cart' exact component={Cart} />
+          <Route path={'/register'} exact component={Register} />
+          <Route path='/*' exact component={Notfound} />
         </Switch>
       </div>
     );

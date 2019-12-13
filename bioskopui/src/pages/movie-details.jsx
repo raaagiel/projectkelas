@@ -4,6 +4,8 @@ import { APIURL } from '../support/apiurl'
 import { Modal, ModalBody, ModalFooter } from 'reactstrap'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
+import { Icon } from 'semantic-ui-react'
+
 
 class movieDetail extends Component {
 
@@ -44,7 +46,6 @@ class movieDetail extends Component {
 
         return (
             <div>
-
                 <Modal isOpen={this.state.traileropen} size='lg' toggle={() => this.setState({ traileropen: false })} contentClassName='Trailer'>
                     <ModalBody className='p-0 bg-tranparent'>
                         <iframe width='100%' title={this.state.datadetailfilm.title} height='100%' src={this.state.datadetailfilm.trailer}>
@@ -99,13 +100,11 @@ class movieDetail extends Component {
                             {this.state.datadetailfilm.genre}
                         </div>
                         <div className='mt-1'>
-                            {this.state.datadetailfilm.durasi} menit
+                            <Icon name='wait' />{this.state.datadetailfilm.durasi} menit
                         </div>
                         <div className='mt-1'>
                             {this.state.datadetailfilm.sinopsis}
                         </div>
-
-
 
                         <div className='mt-3'>
                             <button className='mr-3 btn btn-primary' onClick={this.onBeliTiketClick}>Book Now</button>

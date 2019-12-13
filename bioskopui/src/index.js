@@ -11,7 +11,6 @@ import { BrowserRouter } from 'react-router-dom'
 import thunk from 'redux-thunk'
 import 'semantic-ui-css/semantic.min.css'
 
-
 const store = createStore(Reducers, {}, applyMiddleware(thunk))
 
 ReactDOM.render(

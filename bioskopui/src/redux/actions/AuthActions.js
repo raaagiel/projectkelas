@@ -1,5 +1,6 @@
 import Axios from "axios"
 import { APIURL } from "../../support/apiurl"
+import Swal from 'sweetalert2'
 
 export const LoginSuccessAction = (datauser) => {
     return {
@@ -16,8 +17,20 @@ export const Loginthunk = (username, password) => {
                 if (res.data.length) {
                     localStorage.setItem('dino', res.data[0].id)
                     dispatch(LoginSuccessAction(res.data[0]))
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Login Berhasil',
+                        showConfirmButton: false,
+                        timer: 1500
+                        // // footer: '<a href>Why do I have this issue?</a>'
+                    })
                 } else {
                     dispatch({ type: 'LOGIN_ERROR', payload: 'Salah Masukin Password' })
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oopps...',
+                        text: 'Username/Password Salah',
+                    })
                 }
             }).catch((err) => {
                 console.log(err)

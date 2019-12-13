@@ -5,6 +5,10 @@ import { APIURL } from '../support/apiurl'
 import { Redirect } from 'react-router-dom'
 import { Modal, ModalBody, ModalFooter } from 'reactstrap'
 import Numeral from 'numeral'
+import { Link } from 'react-router-dom'
+
+// import Cart from './pages/cart';
+
 
 class Belitiket extends Component {
     state = {
@@ -122,7 +126,7 @@ class Belitiket extends Component {
         var seats = seat
         var arr = []
         for (var i = 0; i < pilihan.length; i++) {
-            if (pilihan[i].row != rows || pilihan[i].seat != seats) {
+            if (pilihan[i].row !== rows || pilihan[i].seat !== seats) {
                 arr.push(pilihan[i])
             }
         }
@@ -195,7 +199,7 @@ class Belitiket extends Component {
                 )
             }
             return (
-                <button className='mx-2 btn-outline-primary' onClick={() => this.onButtonjamclick(val)}>{val}.00</button>
+                <button key={index} className='mx-2 btn-outline-primary' onClick={() => this.onButtonjamclick(val)}>{val}.00</button>
             )
         })
     }
@@ -212,7 +216,9 @@ class Belitiket extends Component {
                             Berhasil Ditambahkan
                         </ModalBody>
                         <ModalFooter>
-                            <button onClick={() => this.setState({ redirecthome: true })}>Ok</button>
+                            <Link to='/cart'>
+                                <button className='btn btn-primary mr-2'>ok</button>
+                            </Link>
                         </ModalFooter>
                     </Modal>
                     <center className='mt-1'>

@@ -5,9 +5,9 @@ import { APIURL } from '../support/apiurl';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap'
 import Fade from 'react-reveal/Fade'
 import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+// import withReactContent from 'sweetalert2-react-content'
 
-const MySwal = withReactContent(Swal)
+// const MySwal = withReactContent(Swal)
 
 class ManageAdmin extends Component {
     state = {
@@ -46,7 +46,7 @@ class ManageAdmin extends Component {
         var durasi = iniref.editdurasi.value
         var trailer = iniref.edittrailer.value
         var studioId = iniref.editstudio.value
-        var produksi = 'RANS ENTERTAINMENT'
+        var produksi = ''
         var data = {
             title: title,
             image,
@@ -141,7 +141,7 @@ class ManageAdmin extends Component {
         var durasi = iniref.durasi.value
         var trailer = iniref.trailer.value
         var studioId = iniref.studio.value
-        var produksi = 'RANS ENTERTAINMENT'
+        var produksi = ''
         var data = {
             title: title,
             image,
@@ -212,12 +212,7 @@ class ManageAdmin extends Component {
     renderEditCheckbox = (indexedit) => {
         var indexarr = []
         var datafilmedit = this.state.datafilm[indexedit].jadwal
-        console.log(datafilmedit)
-        // console.log(this.state.jadwal)
-        // console.log(this.state.jadwal.indexOf(datafilmedit[1]))
-        // datafilmedit.forEach((val)=>{
-        //     indexarr.push(this.state.jadwal.indexOf(val))
-        // })
+        // console.log(datafilmedit)
         for (var i = 0; i < datafilmedit.length; i++) {
             for (var j = 0; j < this.state.jadwal.length; j++) {
                 if (datafilmedit[i] === this.state.jadwal[j]) {
@@ -336,7 +331,7 @@ class ManageAdmin extends Component {
                                 <TableCell>Jadwal</TableCell>
                                 <TableCell>Studio</TableCell>
                                 <TableCell>Genre</TableCell>
-                                <TableCell>Durasi</TableCell>
+                                <TableCell>Durasi </TableCell>
                                 <TableCell>Action</TableCell>
                             </TableRow>
                         </TableHead>

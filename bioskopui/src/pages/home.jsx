@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import Axios from 'axios'
 import { Link } from 'react-router-dom'
 
-
-
 const url = 'http://localhost:2000/'
 
 class Home extends Component {
@@ -38,13 +36,6 @@ class Home extends Component {
         })
     }
     render() {
-        // const settings = {
-        //     dots: true,
-        //     infinite: true,
-        //     speed: 500,
-        //     slidesToShow: 3,
-        //     slidesToScroll: 3
-        // };
         return (
             <div className=' mx-5'>
                 <div className='row py-5' style={{ paddingLeft: '10%', paddingRight: '10%' }}>

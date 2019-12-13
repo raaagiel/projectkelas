@@ -17,6 +17,18 @@
       "username": "jamal",
       "password": "1234",
       "role": "admin"
+    },
+    {
+      "username": "dani",
+      "password": "4444",
+      "role": "user",
+      "id": 4
+    },
+    {
+      "username": "halu",
+      "password": "1234",
+      "role": "user",
+      "id": 5
     }
   ],
   "studios": [
@@ -37,22 +49,6 @@
     }
   ],
   "movies": [
-    {
-      "title": "Jumanji: The Next Level",
-      "image": "https://media.21cineplex.com/webcontent/gallery/pictures/157422945871583_287x421.jpg",
-      "sinopsis": "Dwayne Johnson, Karen Gillan, Jack Black dan Kevin Hart kembali ke Jumanji, keempatnya harus menyelamatkan salah satu teman mereka. Namun permainan telah berubah. Para pemain kini harus lebih berani melintasi rintangan ekstrem dan kembali dengan selamat dari permainan paling berbahaya di dunia.",
-      "sutradara": "Jake Kasdan",
-      "genre": "Action",
-      "durasi": "121",
-      "produksi": "RANS ENTERTAINMENT",
-      "jadwal": [
-        12,
-        14
-      ],
-      "trailer": "https://www.youtube.com/embed/rBxcF-r9Ibs",
-      "studioId": "1",
-      "id": 1
-    },
     {
       "title": "Last Christmas",
       "image": "https://media.21cineplex.com/webcontent/gallery/pictures/157285280844221_287x421.jpg",
@@ -93,49 +89,32 @@
       "sutradara": "Jared Hess",
       "genre": "Comedy",
       "durasi": "120",
-      "produksi": "RANS ENTERTAINMENT",
+      "produksi": "",
       "jadwal": [
         16,
         18
       ],
-      "trailer": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/btfjTl7sEIg\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>",
+      "trailer": "https://www.youtube.com/embed/ElVSw6xpQ70",
       "studioId": "1",
       "id": 5
+    },
+    {
+      "title": "Submarine",
+      "image": "https://cdn.yts.ms/images/tt1440292/medium_cover_image.jpg",
+      "sinopsis": "Precocious Oliver struggles with being popular in school but when a dark-haired beauty takes interest in him, he's determined to become the best boyfriend in the world. Meanwhile, his parents' already rocky relationship is threatened when his mother's ex-boyfriend moves in next door. Oliver makes some unorthodox plans to ensure that his parents stay together and that Jordana still likes him.",
+      "sutradara": "Richard Ayoade",
+      "genre": "Drama / Romance",
+      "durasi": "100",
+      "produksi": "",
+      "jadwal": [
+        18
+      ],
+      "trailer": "https://www.youtube.com/embed/P-WCCdkVDr4",
+      "studioId": "1",
+      "id": 6
     }
   ],
   "orders": [
-    {
-      "id": 1,
-      "userId": 2,
-      "movieId": 3,
-      "jadwal": 12,
-      "totalHarga": 50000,
-      "bayar": false
-    },
-    {
-      "userId": 3,
-      "movieId": 3,
-      "jadwal": 12,
-      "totalHarga": 50000,
-      "id": 2,
-      "bayar": false
-    },
-    {
-      "userId": 2,
-      "movieId": 3,
-      "jadwal": 14,
-      "totalHarga": 50000,
-      "id": 3,
-      "bayar": false
-    },
-    {
-      "userId": 3,
-      "movieId": 1,
-      "totalharga": 50000,
-      "jadwal": 12,
-      "bayar": false,
-      "id": 4
-    },
     {
       "userId": 2,
       "movieId": 2,
@@ -143,15 +122,25 @@
       "jadwal": 12,
       "bayar": false,
       "id": 5
+    },
+    {
+      "userId": 4,
+      "movieId": 6,
+      "totalharga": 25000,
+      "jadwal": 12,
+      "bayar": false,
+      "id": 6
+    },
+    {
+      "userId": 4,
+      "movieId": 4,
+      "totalharga": 25000,
+      "jadwal": 20,
+      "bayar": false,
+      "id": 7
     }
   ],
   "ordersDetails": [
-    {
-      "id": 1,
-      "orderId": 1,
-      "row": 2,
-      "seat": 4
-    },
     {
       "id": 2,
       "orderId": 1,
@@ -159,58 +148,22 @@
       "seat": 5
     },
     {
-      "id": 3,
-      "orderId": 2,
+      "orderId": 6,
+      "seat": 9,
       "row": 2,
-      "seat": 6
+      "id": 3
     },
     {
-      "id": 4,
-      "orderId": 2,
-      "row": 2,
-      "seat": 7
-    },
-    {
-      "id": 5,
-      "orderId": 3,
-      "row": 2,
-      "seat": 8
-    },
-    {
-      "id": 6,
-      "orderId": 3,
-      "row": 2,
-      "seat": 9
-    },
-    {
-      "orderId": 4,
-      "seat": 8,
-      "row": 1,
-      "id": 7
-    },
-    {
-      "orderId": 4,
-      "seat": 8,
-      "row": 2,
-      "id": 8
-    },
-    {
-      "orderId": 5,
-      "seat": 5,
-      "row": 3,
-      "id": 9
-    },
-    {
-      "orderId": 5,
-      "seat": 7,
-      "row": 1,
-      "id": 10
-    },
-    {
-      "orderId": 5,
-      "seat": 7,
-      "row": 2,
-      "id": 11
+      "orderId": 7,
+      "seat": 10,
+      "row": 0,
+      "id": 4
     }
+  ],
+  "transactions": [
+    {}
+  ],
+  "transactionsDetails": [
+    {}
   ]
 }

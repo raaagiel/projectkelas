@@ -50,23 +50,6 @@
   ],
   "movies": [
     {
-      "title": "Last Christmas",
-      "image": "https://media.21cineplex.com/webcontent/gallery/pictures/157285280844221_287x421.jpg",
-      "sinopsis": "Kate (Emilia Clarke) adalah seorang wanita muda yang mengambil keputusan buruk. Kencan terakhirnya berakhir dengan bencana? Saat diterima di sebuah toko pernak-pernik natal dan berperan sebagai Peri ia bertemu dengan Tom (Henry Golding), Hidupnya berubah lagi. Bagi Kate, sepertinya terlalu bagus untuk menjadi kenyataan.",
-      "sutradara": "Paul Feig",
-      "genre": "Romance",
-      "durasi": "103",
-      "produksi": "RANS ENTERTAINMENT",
-      "jadwal": [
-        14,
-        16,
-        20
-      ],
-      "trailer": "https://www.youtube.com/embed/z9CEIcmWmtA",
-      "studioId": "2",
-      "id": 2
-    },
-    {
       "title": "The Best Way to Walk",
       "image": "https://img.yts.lt/assets/images/movies/the_best_way_to_walk_1976/medium-cover.jpg",
       "sinopsis": "In a vacation camp somewhere in the French country, 1960. Marc et Philippe are two of the counsellors. Marc is very virile, while Philippe is more reserved. A night, Marc surprises Philippe dressed and made-up like a woman. From now on, he will keep on humiliating Philippe...",
@@ -116,14 +99,6 @@
   ],
   "orders": [
     {
-      "userId": 2,
-      "movieId": 2,
-      "totalharga": 75000,
-      "jadwal": 12,
-      "bayar": false,
-      "id": 5
-    },
-    {
       "userId": 4,
       "movieId": 6,
       "totalharga": 25000,
@@ -133,31 +108,121 @@
     },
     {
       "userId": 4,
-      "movieId": 4,
-      "totalharga": 25000,
-      "jadwal": 20,
+      "movieId": 5,
+      "totalharga": 50000,
+      "jadwal": 12,
       "bayar": false,
       "id": 7
+    },
+    {
+      "userId": 4,
+      "movieId": 4,
+      "totalharga": 50000,
+      "jadwal": 12,
+      "bayar": false,
+      "id": 8
+    },
+    {
+      "userId": 4,
+      "movieId": 5,
+      "totalharga": 25000,
+      "jadwal": 12,
+      "bayar": false,
+      "id": 9
+    },
+    {
+      "userId": 4,
+      "movieId": 4,
+      "totalharga": 25000,
+      "jadwal": 12,
+      "bayar": false,
+      "id": 10
+    },
+    {
+      "userId": 4,
+      "movieId": 5,
+      "totalharga": 25000,
+      "jadwal": 12,
+      "bayar": false,
+      "id": 11
+    },
+    {
+      "userId": 4,
+      "movieId": 5,
+      "totalharga": 25000,
+      "jadwal": 12,
+      "bayar": false,
+      "id": 12
+    },
+    {
+      "userId": 4,
+      "movieId": 5,
+      "totalharga": 25000,
+      "jadwal": 12,
+      "bayar": false,
+      "id": 13
     }
   ],
   "ordersDetails": [
-    {
-      "id": 2,
-      "orderId": 1,
-      "row": 2,
-      "seat": 5
-    },
-    {
-      "orderId": 6,
-      "seat": 9,
-      "row": 2,
-      "id": 3
-    },
     {
       "orderId": 7,
       "seat": 10,
       "row": 0,
       "id": 4
+    },
+    {
+      "orderId": 7,
+      "seat": 6,
+      "row": 3,
+      "id": 5
+    },
+    {
+      "orderId": 7,
+      "seat": 7,
+      "row": 3,
+      "id": 6
+    },
+    {
+      "orderId": 8,
+      "seat": 8,
+      "row": 0,
+      "id": 7
+    },
+    {
+      "orderId": 8,
+      "seat": 9,
+      "row": 0,
+      "id": 8
+    },
+    {
+      "orderId": 9,
+      "seat": 10,
+      "row": 3,
+      "id": 9
+    },
+    {
+      "orderId": 10,
+      "seat": 9,
+      "row": 1,
+      "id": 10
+    },
+    {
+      "orderId": 11,
+      "seat": 11,
+      "row": 1,
+      "id": 11
+    },
+    {
+      "orderId": 12,
+      "seat": 9,
+      "row": 7,
+      "id": 12
+    },
+    {
+      "orderId": 13,
+      "seat": 6,
+      "row": 1,
+      "id": 13
     }
   ],
   "transactions": [

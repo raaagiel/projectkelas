@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// import Axios from 'axios'
 import {
   Collapse,
   Navbar,
@@ -12,24 +13,26 @@ import {
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap';
-// import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-// import color from '@material-ui/core/colors/lime';
 import { LogoutActions } from './../redux/actions/AuthActions'
 import { Icon } from 'semantic-ui-react'
+// import { APIURL } from './../support/apiurl'
+// import { Link } from 'react-router-dom'
+// import color from '@material-ui/core/colors/lime';
 
 
 const Logoutbtn = () => {
   localStorage.removeItem('dino')
   this.props.LogoutActions()
-
-
 }
 
 const Header = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
 
+  const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+
+  // console.log('haloooo')
+  // console.log(props.nama)
 
   return (
     <div>
@@ -37,7 +40,6 @@ const Header = (props) => {
         <NavbarBrand style={{ color: '#fff' }} href="/">
           <Icon name='film' size='huge' /> KAMINGSUN
         </NavbarBrand>
-
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
@@ -68,14 +70,13 @@ const Header = (props) => {
                       <Icon name='user circle' size='large' className='mr-2' />hai, {props.namauser}
                     </DropdownToggle>
                     <DropdownMenu right style={{ backgroundColor: '#f4f4f4' }}>
-                      <DropdownItem href='/cart'><Icon name='shopping cart' />Keranjang Belanja</DropdownItem>
+                      <DropdownItem href='/cart'><Icon name='shopping cart' />Keranjang Belanja ({props.count})</DropdownItem>
                       <DropdownItem href='/' ><Icon name='vcard' />Manage User</DropdownItem>
                       <DropdownItem href={'/'} onClick={Logoutbtn}><Icon name='user outline' />Logout </DropdownItem>
                     </DropdownMenu>
                   </UncontrolledDropdown>
                 ) : null
             }
-
           </Nav>
         </Collapse>
       </Navbar>
@@ -86,7 +87,9 @@ const MapstateToprops = (state) => {
   return {
     namauser: state.Auth.username,
     Auth: state.Auth.login,
-    role: state.Auth.role
+    role: state.Auth.role,
+    AuthLog: state.Auth.login,
+    UserId: state.Auth.id
   }
 }
 export default connect(MapstateToprops, { LogoutActions })(Header);

@@ -195,11 +195,11 @@ class Belitiket extends Component {
         return this.state.datamovie.jadwal.map((val, index) => {
             if (this.state.jam === val) {
                 return (
-                    <button className='mx-2 btn-outline-primary' disabled>{val}.00</button>
+                    <button className='mx-2 btn btn-secondary' disabled>{val}.00</button>
                 )
             }
             return (
-                <button key={index} className='mx-2 btn-outline-primary' onClick={() => this.onButtonjamclick(val)}>{val}.00</button>
+                <button key={index} className='mx-2 btn btn-secondary' onClick={() => this.onButtonjamclick(val)}>{val}.00</button>
             )
         })
     }
@@ -216,8 +216,8 @@ class Belitiket extends Component {
                             Berhasil Ditambahkan
                         </ModalBody>
                         <ModalFooter>
-                            <Link to='/cart'>
-                                <button className='btn btn-primary mr-2'>ok</button>
+                            <Link to='/'>
+                                <button className='btn btn-primary mr-2'>Ok</button>
                             </Link>
                         </ModalFooter>
                     </Modal>

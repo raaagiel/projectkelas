@@ -18,7 +18,8 @@ import Notfound from './pages/notfound';
 
 class App extends Component {
   state = {
-    loading: true
+    loading: true,
+    keranjang: '',
   }
 
   componentDidMount() {
@@ -33,8 +34,38 @@ class App extends Component {
         this.setState({ loading: false })
       })
 
-  }
+    Axios.get(`${APIURL}orders?_expand=movie&userId=${id}&bayar=false`)
+      .then((res) => {
+        // this.setState({ datacart: res.data })
+        var datacart = res.data
+        var qtyarr = []
+        // console.log(res.data)
+        res.data.forEach(element => {
+          qtyarr.push(Axios.get(`${APIURL}ordersDetails?orderId=${element.id}`))
+        })
+        var qtyarrfinal = []
+        Axios.all(qtyarr)
+          .then((res1) => {
+            res1.forEach((val) => {
+              qtyarrfinal.push(val.data)
+            })
+            // console.log(qtyarrfinal)
+            var datafinal = []
+            datacart.forEach((val, index) => {
+              datafinal.push({ ...val, qty: qtyarrfinal[index] })
+            })
+            // console.log(datafinal)
+            this.setState({
+              keranjang: datafinal
+            })
+          }).catch((err1) => {
+            console.log(err1)
+          })
+      }).catch((err) => {
+        console.log(err)
+      })
 
+  }
 
   render() {
     if (this.state.loading) {
@@ -47,7 +78,7 @@ class App extends Component {
     }
     return (
       <div>
-        <Header />
+        <Header count={this.state.keranjang.length} />
         <Switch>
           <Route path={'/'} exact>
             <Home />
@@ -69,7 +100,8 @@ class App extends Component {
 
 const MapstateToprops = (state) => {
   return {
-    AuthLog: state.Auth.login
+    AuthLog: state.Auth.login,
+    UserId: state.Auth.id
   }
 }
 

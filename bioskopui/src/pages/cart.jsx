@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
 import { connect } from 'react-redux'
-// import { Table, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 import { APIURL } from './../support/apiurl'
 import { Icon, Menu, Table, } from 'semantic-ui-react'
+// import { Table, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 // import { element } from 'prop-types'
 
 class Cart extends Component {

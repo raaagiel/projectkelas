@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom'
 import { Button, Form } from 'semantic-ui-react'
-// import Axios from 'axios';
-// import { APIURL } from '../support/apiurl';
 import Loader from 'react-loader-spinner'
 import { connect } from 'react-redux'
 import { LoginSuccessAction, Loginthunk, Login_error } from './../redux/actions'
+// import Axios from 'axios';
+// import { APIURL } from '../support/apiurl';
 
 class Login extends Component {
     state = {

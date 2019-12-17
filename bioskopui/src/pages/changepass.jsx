@@ -110,7 +110,7 @@ class ChangePass extends Component {
                             <input placeholder="" type="password" ref="confpass" />
                         </Form.Field>
                         <br />
-                        <Button fluid type="submit" onClick={this.handleChangePassClick}>
+                        <Button fluid color='instagram' type="submit" onClick={this.handleChangePassClick}>
                             Change Password
             </Button>
                     </Form>

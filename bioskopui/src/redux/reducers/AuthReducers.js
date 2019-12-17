@@ -6,7 +6,8 @@ const INITIAL_STATE = {
     error: '',
     loading: false,
     role: '',
-    keranjang: 0
+    keranjang: 0,
+    totalharga: 0
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -19,6 +20,8 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, error: action.payload, loading: false }
         case 'LOGOUT':
             return INITIAL_STATE
+        case 'TOTAL_HARGA':
+            return { ...state, totalharga: action.payload }
         case 'COUNT_CART':
             return { ...state, keranjang: action.payload }
         default:

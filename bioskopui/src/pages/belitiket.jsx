@@ -243,7 +243,7 @@ class Belitiket extends Component {
                         {this.state.loading ? null : this.renderbutton()}
 
                         <div>
-                            {this.state.pilihan.length ? <button onClick={this.onOrderClick} className='btn btn-primary mt-3'>Buy Now</button>
+                            {this.state.pilihan.length ? <button onClick={this.onOrderClick} className='btn btn-primary mt-3'>Book Now</button>
                                 : null}
                         </div>
                         {this.state.pilihan.length ?

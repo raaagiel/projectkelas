@@ -19,7 +19,7 @@
       "role": "admin"
     },
     {
-      "password": "1234",
+      "password": "12345",
       "username": "dani",
       "role": "user",
       "id": 4
@@ -129,6 +129,14 @@
       "jadwal": 12,
       "bayar": false,
       "id": 10
+    },
+    {
+      "userId": 4,
+      "movieId": 5,
+      "totalharga": 125000,
+      "jadwal": 16,
+      "bayar": false,
+      "id": 11
     }
   ],
   "ordersDetails": [
@@ -173,6 +181,36 @@
       "seat": 14,
       "row": 2,
       "id": 10
+    },
+    {
+      "orderId": 11,
+      "seat": 9,
+      "row": 1,
+      "id": 11
+    },
+    {
+      "orderId": 11,
+      "seat": 10,
+      "row": 1,
+      "id": 12
+    },
+    {
+      "orderId": 11,
+      "seat": 11,
+      "row": 1,
+      "id": 13
+    },
+    {
+      "orderId": 11,
+      "seat": 12,
+      "row": 1,
+      "id": 14
+    },
+    {
+      "orderId": 11,
+      "seat": 13,
+      "row": 1,
+      "id": 15
     }
   ],
   "transactions": [

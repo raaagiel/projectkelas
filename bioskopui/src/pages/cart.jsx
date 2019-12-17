@@ -3,6 +3,7 @@ import Axios from 'axios'
 import { connect } from 'react-redux'
 import { APIURL } from './../support/apiurl'
 import { Icon, Menu, Table, Popup, Button } from 'semantic-ui-react'
+import { totalHargaAction } from '../redux/actions'
 // import { Button } from '@material-ui/core'
 // import { Table, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 // import { element } from 'prop-types'
@@ -10,8 +11,9 @@ import { Icon, Menu, Table, Popup, Button } from 'semantic-ui-react'
 class Cart extends Component {
     state = {
         datacart: null,
-        modaldetail: false,
-        indexdetail: 0
+        // indexdetail: 0,
+        totalharga: 0,
+        detailSeat: []
 
     }
 
@@ -20,6 +22,11 @@ class Cart extends Component {
             .then((res) => {
                 // this.setState({ datacart: res.data })
                 var datacart = res.data
+                var harga = 0
+                for (var i = 0; i < datacart.length; i++) {
+                    harga += datacart[i].totalharga
+                }
+                this.setState({ totalharga: harga })
                 var qtyarr = []
                 // console.log(res.data)
                 res.data.forEach(element => {
@@ -49,7 +56,6 @@ class Cart extends Component {
     }
 
     renderCart = () => {
-        // console.log(this.state.datacart)
         if (this.state.datacart !== null) {
             if (this.state.datacart.length === 0) {
                 return (
@@ -64,35 +70,33 @@ class Cart extends Component {
                         <Table.Cell>{val.movie.title}</Table.Cell>
                         <Table.Cell><Icon name='wait' /> {val.jadwal}:00</Table.Cell>
                         <Table.Cell>{val.qty.length}</Table.Cell>
-                        <Table.Cell>
+                        <Table.Cell>Rp. {val.totalharga}</Table.Cell>
 
+                        <Table.Cell>
                             <Popup
                                 position='right center'
-                                content={<Table singleLine>
+                                content={<Table singleLine color='teal' inverted>
                                     <Table.Header>
                                         <Table.Row>
-                                            <Table.HeaderCell>No.</Table.HeaderCell>
-                                            <Table.HeaderCell>Bangku</Table.HeaderCell>
+                                            <Table.HeaderCell>Total</Table.HeaderCell>
+                                            <Table.HeaderCell>Seat</Table.HeaderCell>
                                         </Table.Row>
                                     </Table.Header>
 
                                     <Table.Body>
-                                        {this.state.datacart !== null && this.state.datacart.length !== 0 ?
-                                            this.state.datacart[this.state.indexdetail].qty.map((val, index) => {
-                                                return (
-                                                    <Table.Row key={index} >
-                                                        <Table.Cell>{index + 1}</Table.Cell>
-                                                        <Table.Cell>{`ABCDEFGHIJKLMNOPQRSTUVWXYZ`[val.row] + [val.seat + 1]}</Table.Cell>
-                                                    </Table.Row>
-                                                )
-                                            })
-                                            : null
-                                        }
+
+                                        <Table.Row key={index} >
+                                            <Table.Cell>{this.state.detailSeat.length}</Table.Cell>
+                                            <Table.Cell>{this.state.detailSeat.map((val, i) => {
+                                                return val + ', '
+                                            })}
+                                            </Table.Cell>
+                                        </Table.Row>
                                     </Table.Body>
                                 </Table>}
                                 on='click'
                                 pinned
-                                trigger={<Button color='instagram' size='tiny' onClick={() => this.setState({ modaldetail: true, indexdetail: index })}>Detail</Button>
+                                trigger={<Button floated='right' color='instagram' size='tiny' onClick={() => this.btnDetail(index)}>Detail</Button>
                                 }
                             />
                         </Table.Cell>
@@ -103,38 +107,59 @@ class Cart extends Component {
         }
     }
 
+    btnDetail = (index) => {
+        var id = this.state.datacart[index].id
+        Axios.get(`${APIURL}ordersDetails?orderId=${id}`)
+            .then(res => {
+                var detailfilm = res.data
+                var seat = []
+                var row = []
+                detailfilm.map((val, index) => {
+                    seat.push(val.seat)
+                    row.push(val.row)
+                })
+                var abjad = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+                var posisi = []
+                for (var i = 0; i < seat.length; i++) {
+                    for (var j = 0; j < abjad.length; j++) {
+                        if (row[i] === j) {
+                            posisi.push(String(abjad[j]) + (seat[i] + 1))
+                        }
+                    }
+                } this.setState({ detailSeat: posisi })
+            })
+    }
+
     render() {
+        this.props.totalHargaAction(this.state.totalharga)
         if (this.props.UserId) {
             return (
-                <div className='mt-3 '>
+                <div className='mt-5 '>
                     <center>
-                        <Table celled style={{ width: '70%' }}>
+                        <Table color='black' inverted celled style={{ width: '70%', height: '100px' }} >
                             <Table.Header>
-                                <Table.Row>
-                                    <Table.HeaderCell >Order ID</Table.HeaderCell>
+                                <Table.Row  >
+                                    <Table.HeaderCell >No.</Table.HeaderCell>
                                     <Table.HeaderCell >Title</Table.HeaderCell>
                                     <Table.HeaderCell >Jadwal Tayang </Table.HeaderCell>
                                     <Table.HeaderCell >Jumlah</Table.HeaderCell>
+                                    <Table.HeaderCell >Harga</Table.HeaderCell>
                                     <Table.HeaderCell >Summary</Table.HeaderCell>
                                 </Table.Row>
                             </Table.Header>
                             <Table.Body>
                                 {this.renderCart()}
                             </Table.Body>
+
                             <Table.Footer>
                                 <Table.Row>
-                                    <Table.HeaderCell colSpan='5'>
-                                        <Menu floated='right' pagination>
-                                            <Menu.Item as='a' icon>
-                                                <Icon size='small' name='chevron left' />
-                                            </Menu.Item>
-                                            {/* <Menu.Item as='a'>1</Menu.Item>
-                                        <Menu.Item as='a'>2</Menu.Item> */}
-                                            {/* <Menu.Item as='a'>3</Menu.Item> */}
-                                            <Menu.Item as='a' icon>
-                                                <Icon size='small' name='chevron right' />
-                                            </Menu.Item>
-                                        </Menu>
+                                    <Table.HeaderCell colSpan='6' floated='center'>
+                                        <Button size='tiny' animated='vertical' color='instagram' inverted style={{ marginLeft: '841px' }}>
+                                            <Button.Content hidden>Checkout</Button.Content>
+                                            <Button.Content visible>
+                                                <Icon name='shop' />Total Rp {this.props.totalharga}
+                                            </Button.Content>
+                                        </Button>
                                     </Table.HeaderCell>
                                 </Table.Row>
                             </Table.Footer>
@@ -151,8 +176,9 @@ const MapstateToprops = (state) => {
     return {
         AuthLog: state.Auth.login,
         UserId: state.Auth.id,
-        keranjang: state.Auth.keranjang
+        keranjang: state.Auth.keranjang,
+        totalharga: state.Auth.totalharga
     }
 }
 
-export default connect(MapstateToprops)(Cart)
+export default connect(MapstateToprops, { totalHargaAction })(Cart)

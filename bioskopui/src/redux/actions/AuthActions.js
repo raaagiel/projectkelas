@@ -75,3 +75,9 @@ export const ChangePassAction = newpass => {
         payload: newpass
     };
 }
+export const totalHargaAction = (price) => {
+    return {
+        type: 'TOTAL_HARGA',
+        payload: price
+    }
+}

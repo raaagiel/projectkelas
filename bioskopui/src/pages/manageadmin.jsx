@@ -5,6 +5,8 @@ import { APIURL } from '../support/apiurl';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap'
 import Fade from 'react-reveal/Fade'
 import Swal from 'sweetalert2'
+import { Button, Icon } from 'semantic-ui-react'
+
 // import withReactContent from 'sweetalert2-react-content'
 
 // const MySwal = withReactContent(Swal)
@@ -22,12 +24,24 @@ class ManageAdmin extends Component {
     componentDidMount() {
         Axios.get(`${APIURL}movies`)
             .then((res) => {
-                // console.log(res.data)
-                this.setState({ datafilm: res.data })
+                Axios.get(`${APIURL}studios`)
+                    .then(res1 => {
+
+                        this.setState({
+                            datafilm: res.data,
+                            datastudio: res1.data
+                        })
+                            .catch(err => {
+                                console.log(err)
+                            })
+                    }).catch((err) => {
+                        console.log(err)
+                    })
             }).catch((err) => {
                 console.log(err)
             })
     }
+
     onUpdateDataclick = () => {
         var jadwaltemplate = this.state.jadwal
         var jadwal = []
@@ -193,12 +207,13 @@ class ManageAdmin extends Component {
                     {/* <TableCell>{val.jadwal}</TableCell> */}
                     <TableCell align="center" style={{ width: "60px" }}>
                         {val.jadwal.map((v, i) => {
-                            return <button className="btn btn-outline-info my-1" style={{ height: "2rem", lineHeight: "14px", cursor: "text" }}>{v}:00</button>
+                            // return <button className="btn btn-info my-1" style={{ height: "2rem", lineHeight: "14px", cursor: "text" }}>{v}:00</button>
+                            return <Button className="my-1" style={{ height: "0rem", lineHeight: "2px", cursor: "text", }} icon labelPosition='left'> <Icon name='wait' />{v}:00</Button>
                         })}
                     </TableCell>
                     <TableCell>{val.studioId}</TableCell>
                     <TableCell>{val.genre}</TableCell>
-                    <TableCell>{val.durasi}</TableCell>
+                    <TableCell>{val.durasi} Menit</TableCell>
                     <TableCell>
                         <button className='btn btn-outline-primary mr-1' onClick={() => this.setState({ modaledit: true, indexedit: index })}>Edit</button>
                         <button className='btn btn-outline-danger' onClick={() => this.onDeleteClick(val)}>Delete</button>
@@ -306,9 +321,18 @@ class ManageAdmin extends Component {
                         </div>
                         <input type="text" ref='trailer' placeholder='trailer' className='form-control mt-2' />
                         <select ref='studio' className='form-control mt-2'>
-                            <option value="1">Studio 1</option>
+
+                            {
+                                this.state.datastudio.map((val) => {
+                                    return (
+                                        <option value={val.id}>{val.studios}</option>
+                                    )
+                                })
+                            }
+
+                            {/* <option value="1">Studio 1</option>
                             <option value="2">Studio 2</option>
-                            <option value="3">Studio 3</option>
+                            <option value="3">Studio 3</option> */}
                         </select>
                         <input type="text" ref='sutradara' placeholder='sutradara' className='form-control mt-2' />
                         <input type="number" ref='durasi' placeholder='durasi' className='form-control mt-2' />

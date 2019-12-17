@@ -5,7 +5,8 @@ import { APIURL } from '../support/apiurl'
 import { Redirect } from 'react-router-dom'
 import { Modal, ModalBody, ModalFooter } from 'reactstrap'
 import Numeral from 'numeral'
-import { Link } from 'react-router-dom'
+import { keranjangAction } from './../redux/actions'
+// import { Link } from 'react-router-dom'
 
 // import Cart from './pages/cart';
 
@@ -37,14 +38,15 @@ class Belitiket extends Component {
                 Axios.get(`${APIURL}orders?movieId=${movieId}&jadwal=${this.state.jam}`)
                     .then((res2) => {
                         var arrAxios = []
+                        console.log(res2.data)
                         res2.data.forEach((val) => {
-                            // console.log(val)
                             arrAxios.push(Axios.get(`${APIURL}ordersDetails?orderId=${val.id}`))
                         })
                         // ===========================LOOPING AXIOS===============================================
                         var arrAxios2 = []
+
                         Axios.all(arrAxios).then((res3) => {
-                            // console.log(res3)
+                            console.log(res3)
                             res3.forEach((val) => {
                                 arrAxios2.push(...val.data)
                             })
@@ -83,6 +85,13 @@ class Belitiket extends Component {
         }
         Axios.post(`${APIURL}orders`, dataorders)
             .then((res) => {
+                Axios.get(`${APIURL}orders?userId=${res.data.id}`)
+                    .then((res2) => {
+                        console.log(res2.data.length)
+                        // this.props.keranjangAction(res2.data.length)
+                    }).catch((err) => {
+                        console.log(err)
+                    })
                 // console.log(res.data.id)
                 var dataordersdetail = []
                 pilihan.forEach((val) => {
@@ -107,6 +116,11 @@ class Belitiket extends Component {
             }).catch((err) => {
                 console.log(err)
             })
+    }
+
+    onClickOkOrder = () => {
+        this.setState({ openmodalcart: false })
+        window.location.reload()
     }
 
     onButtonjamclick = (val) => {
@@ -215,10 +229,10 @@ class Belitiket extends Component {
                         <ModalBody>
                             Berhasil Ditambahkan
                         </ModalBody>
-                        <ModalFooter>
-                            <Link to='/'>
-                                <button className='btn btn-primary mr-2'>Ok</button>
-                            </Link>
+                        <ModalFooter >
+                            {/* <Link to='/'> */}
+                            <button className='btn btn-primary mr-2' onClick={this.onClickOkOrder}>Ok</button>
+                            {/* </Link> */}
                         </ModalFooter>
                     </Modal>
                     <center className='mt-1'>
@@ -260,4 +274,4 @@ const MapstateToprops = (state) => {
         UserId: state.Auth.id
     }
 }
-export default connect(MapstateToprops)(Belitiket)
+export default connect(MapstateToprops, { keranjangAction })(Belitiket)

@@ -42,6 +42,7 @@ const Header = (props) => {
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
+
           <Nav className="ml-auto" navbar>
             {props.namauser === '' ?
               <NavItem>
@@ -70,13 +71,14 @@ const Header = (props) => {
                       <Icon name='user circle' size='large' className='mr-2' />hai, {props.namauser}
                     </DropdownToggle>
                     <DropdownMenu right style={{ backgroundColor: '#f4f4f4' }}>
-                      <DropdownItem href='/cart'><Icon name='shopping cart' />Keranjang Belanja ({props.count})</DropdownItem>
-                      <DropdownItem href='/' ><Icon name='vcard' />Manage User</DropdownItem>
+                      <DropdownItem href='/cart'><Icon name='shopping cart' />Cart ({props.keranjang})</DropdownItem>
+                      <DropdownItem href='/changepass' ><Icon name='vcard' />Manage User</DropdownItem>
                       <DropdownItem href={'/'} onClick={Logoutbtn}><Icon name='user outline' />Logout </DropdownItem>
                     </DropdownMenu>
                   </UncontrolledDropdown>
                 ) : null
             }
+
           </Nav>
         </Collapse>
       </Navbar>
@@ -89,7 +91,8 @@ const MapstateToprops = (state) => {
     Auth: state.Auth.login,
     role: state.Auth.role,
     AuthLog: state.Auth.login,
-    UserId: state.Auth.id
+    UserId: state.Auth.id,
+    keranjang: state.Auth.keranjang
   }
 }
 export default connect(MapstateToprops, { LogoutActions })(Header);

@@ -19,8 +19,8 @@
       "role": "admin"
     },
     {
+      "password": "1234",
       "username": "dani",
-      "password": "4444",
       "role": "user",
       "id": 4
     },
@@ -100,14 +100,6 @@
   "orders": [
     {
       "userId": 4,
-      "movieId": 6,
-      "totalharga": 25000,
-      "jadwal": 12,
-      "bayar": false,
-      "id": 6
-    },
-    {
-      "userId": 4,
       "movieId": 5,
       "totalharga": 50000,
       "jadwal": 12,
@@ -116,51 +108,27 @@
     },
     {
       "userId": 4,
-      "movieId": 4,
-      "totalharga": 50000,
-      "jadwal": 12,
+      "movieId": 5,
+      "totalharga": 25000,
+      "jadwal": 18,
       "bayar": false,
       "id": 8
     },
     {
       "userId": 4,
-      "movieId": 5,
-      "totalharga": 25000,
+      "movieId": 6,
+      "totalharga": 75000,
       "jadwal": 12,
       "bayar": false,
       "id": 9
     },
     {
       "userId": 4,
-      "movieId": 4,
-      "totalharga": 25000,
+      "movieId": 6,
+      "totalharga": 50000,
       "jadwal": 12,
       "bayar": false,
       "id": 10
-    },
-    {
-      "userId": 4,
-      "movieId": 5,
-      "totalharga": 25000,
-      "jadwal": 12,
-      "bayar": false,
-      "id": 11
-    },
-    {
-      "userId": 4,
-      "movieId": 5,
-      "totalharga": 25000,
-      "jadwal": 12,
-      "bayar": false,
-      "id": 12
-    },
-    {
-      "userId": 4,
-      "movieId": 5,
-      "totalharga": 25000,
-      "jadwal": 12,
-      "bayar": false,
-      "id": 13
     }
   ],
   "ordersDetails": [
@@ -171,58 +139,40 @@
       "id": 4
     },
     {
-      "orderId": 7,
-      "seat": 6,
-      "row": 3,
+      "orderId": 8,
+      "seat": 10,
+      "row": 0,
       "id": 5
     },
     {
-      "orderId": 7,
-      "seat": 7,
-      "row": 3,
+      "orderId": 9,
+      "seat": 8,
+      "row": 2,
       "id": 6
     },
     {
-      "orderId": 8,
-      "seat": 8,
-      "row": 0,
-      "id": 7
-    },
-    {
-      "orderId": 8,
+      "orderId": 9,
       "seat": 9,
-      "row": 0,
-      "id": 8
+      "row": 2,
+      "id": 7
     },
     {
       "orderId": 9,
       "seat": 10,
-      "row": 3,
+      "row": 2,
+      "id": 8
+    },
+    {
+      "orderId": 10,
+      "seat": 13,
+      "row": 2,
       "id": 9
     },
     {
       "orderId": 10,
-      "seat": 9,
-      "row": 1,
+      "seat": 14,
+      "row": 2,
       "id": 10
-    },
-    {
-      "orderId": 11,
-      "seat": 11,
-      "row": 1,
-      "id": 11
-    },
-    {
-      "orderId": 12,
-      "seat": 9,
-      "row": 7,
-      "id": 12
-    },
-    {
-      "orderId": 13,
-      "seat": 6,
-      "row": 1,
-      "id": 13
     }
   ],
   "transactions": [

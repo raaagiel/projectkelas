@@ -2,13 +2,17 @@ import React, { Component } from 'react'
 import Axios from 'axios'
 import { connect } from 'react-redux'
 import { APIURL } from './../support/apiurl'
-import { Icon, Menu, Table, } from 'semantic-ui-react'
+import { Icon, Menu, Table, Popup, Button } from 'semantic-ui-react'
+// import { Button } from '@material-ui/core'
 // import { Table, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 // import { element } from 'prop-types'
 
 class Cart extends Component {
     state = {
-        datacart: null
+        datacart: null,
+        modaldetail: false,
+        indexdetail: 0
+
     }
 
     componentDidMount() {
@@ -45,7 +49,7 @@ class Cart extends Component {
     }
 
     renderCart = () => {
-        console.log(this.state.datacart)
+        // console.log(this.state.datacart)
         if (this.state.datacart !== null) {
             if (this.state.datacart.length === 0) {
                 return (
@@ -60,7 +64,39 @@ class Cart extends Component {
                         <Table.Cell>{val.movie.title}</Table.Cell>
                         <Table.Cell><Icon name='wait' /> {val.jadwal}:00</Table.Cell>
                         <Table.Cell>{val.qty.length}</Table.Cell>
-                        <Table.Cell><button className='btn btn-primary'>Detail</button></Table.Cell>
+                        <Table.Cell>
+
+                            <Popup
+                                position='right center'
+                                content={<Table singleLine>
+                                    <Table.Header>
+                                        <Table.Row>
+                                            <Table.HeaderCell>No.</Table.HeaderCell>
+                                            <Table.HeaderCell>Bangku</Table.HeaderCell>
+                                        </Table.Row>
+                                    </Table.Header>
+
+                                    <Table.Body>
+                                        {this.state.datacart !== null && this.state.datacart.length !== 0 ?
+                                            this.state.datacart[this.state.indexdetail].qty.map((val, index) => {
+                                                return (
+                                                    <Table.Row key={index} >
+                                                        <Table.Cell>{index + 1}</Table.Cell>
+                                                        <Table.Cell>{`ABCDEFGHIJKLMNOPQRSTUVWXYZ`[val.row] + [val.seat + 1]}</Table.Cell>
+                                                    </Table.Row>
+                                                )
+                                            })
+                                            : null
+                                        }
+                                    </Table.Body>
+                                </Table>}
+                                on='click'
+                                pinned
+                                trigger={<Button color='instagram' size='tiny' onClick={() => this.setState({ modaldetail: true, indexdetail: index })}>Detail</Button>
+                                }
+                            />
+                        </Table.Cell>
+
                     </Table.Row>
                 )
             })
@@ -114,7 +150,8 @@ class Cart extends Component {
 const MapstateToprops = (state) => {
     return {
         AuthLog: state.Auth.login,
-        UserId: state.Auth.id
+        UserId: state.Auth.id,
+        keranjang: state.Auth.keranjang
     }
 }
 

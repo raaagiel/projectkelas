@@ -147,6 +147,10 @@ class Belitiket extends Component {
         this.setState({ pilihan: arr })
     }
 
+    btnReset = () => {
+        this.setState({ pilihan: [] })
+    }
+
     renderHargaQuantity = () => {
         var jumlahtiket = this.state.pilihan.length
         var harga = jumlahtiket * 25000
@@ -242,15 +246,22 @@ class Belitiket extends Component {
 
                         {this.state.loading ? null : this.renderbutton()}
 
-                        <div>
-                            {this.state.pilihan.length ? <button onClick={this.onOrderClick} className='btn btn-primary mt-3'>Book Now</button>
-                                : null}
+                        <div style={{ justifyContent: 'center' }}>
+
+                            <div>
+                                {this.state.pilihan.length ? <button onClick={this.onOrderClick} className='btn btn-primary mr-20 mt-2'>Book Now</button>
+                                    : null}
+                            </div>
+                            <div>
+                                {this.state.pilihan.length ? <button onClick={this.btnReset} className='btn btn-primary mt-2'>Reset</button>
+                                    : null}
+                            </div>
+                            {this.state.pilihan.length ?
+                                this.renderHargaQuantity()
+                                :
+                                null
+                            }
                         </div>
-                        {this.state.pilihan.length ?
-                            this.renderHargaQuantity()
-                            :
-                            null
-                        }
                         <div className='d-flex justify-content-center mt-4'></div>
                         <div>
                             {this.state.loading ? null : this.renderseat()}

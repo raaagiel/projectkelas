@@ -75,18 +75,10 @@
     {
       "userId": 4,
       "movieId": 6,
-      "totalharga": 25000,
-      "jadwal": 12,
+      "totalharga": 50000,
+      "jadwal": 18,
       "bayar": false,
       "id": 1
-    },
-    {
-      "userId": 4,
-      "movieId": 4,
-      "totalharga": 75000,
-      "jadwal": 20,
-      "bayar": false,
-      "id": 2
     }
   ],
   "ordersDetails": [
@@ -97,22 +89,10 @@
       "id": 1
     },
     {
-      "orderId": 2,
-      "seat": 9,
-      "row": 0,
-      "id": 2
-    },
-    {
-      "orderId": 2,
+      "orderId": 1,
       "seat": 10,
-      "row": 0,
-      "id": 3
-    },
-    {
-      "orderId": 2,
-      "seat": 11,
-      "row": 0,
-      "id": 4
+      "row": 4,
+      "id": 2
     }
   ],
   "transactions": [],

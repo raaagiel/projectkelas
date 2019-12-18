@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import Axios from 'axios'
 import { connect } from 'react-redux'
 import { APIURL } from './../support/apiurl'
-import { Icon, Table, Popup, Button } from 'semantic-ui-react'
+import { Icon, Menu, Table, Popup, Button } from 'semantic-ui-react'
 import { totalHargaAction } from '../redux/actions'
-import { Redirect } from 'react-router-dom'
 // import { Button } from '@material-ui/core'
 // import { Table, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 // import { element } from 'prop-types'
@@ -14,14 +13,14 @@ class Cart extends Component {
         datacart: null,
         // indexdetail: 0,
         totalharga: 0,
-        detailSeat: [],
-        cartOke: false
+        detailSeat: []
 
     }
 
     componentDidMount() {
         Axios.get(`${APIURL}orders?_expand=movie&userId=${this.props.UserId}&bayar=false`)
             .then((res) => {
+                // this.setState({ datacart: res.data })
                 var datacart = res.data
                 var harga = 0
                 for (var i = 0; i < datacart.length; i++) {
@@ -75,8 +74,8 @@ class Cart extends Component {
 
                         <Table.Cell>
                             <Popup
-                                position='left center'
-                                content={<Table singleLine color='red' inverted>
+                                position='right center'
+                                content={<Table singleLine color='teal' inverted>
                                     <Table.Header>
                                         <Table.Row>
                                             <Table.HeaderCell>Total</Table.HeaderCell>
@@ -131,25 +130,14 @@ class Cart extends Component {
             })
     }
 
-    btnHistory = () => {
-        this.props.totalHargaAction(this.state.totalharga)
-        this.setState({ cartOke: true })
-    }
-
     render() {
-        // console.log(this.state.totalharga)
-        if (this.state.cartOke) {
-            return <Redirect to='/history' />
-        }
-
         this.props.totalHargaAction(this.state.totalharga)
         if (this.props.UserId) {
             return (
                 <div className='mt-5 '>
                     <center>
-                        <Table color='teal' inverted celled style={{ width: '70%', height: '100px' }} >
+                        <Table color='black' inverted celled style={{ width: '70%', height: '100px' }} >
                             <Table.Header>
-                                <h1>Cart</h1>
                                 <Table.Row  >
                                     <Table.HeaderCell >No.</Table.HeaderCell>
                                     <Table.HeaderCell >Title</Table.HeaderCell>
@@ -166,9 +154,9 @@ class Cart extends Component {
                             <Table.Footer>
                                 <Table.Row>
                                     <Table.HeaderCell colSpan='6' floated='center'>
-                                        <Button size='tiny' animated='vertical' color='vk' inverted style={{ marginLeft: '841px' }}>
-                                            <Button.Content hidden onClick={this.btnHistory}>Checkout</Button.Content>
-                                            <Button.Content visible >
+                                        <Button size='tiny' animated='vertical' color='instagram' inverted style={{ marginLeft: '841px' }}>
+                                            <Button.Content hidden>Checkout</Button.Content>
+                                            <Button.Content visible>
                                                 <Icon name='shop' />Total Rp {this.props.totalharga}
                                             </Button.Content>
                                         </Button>

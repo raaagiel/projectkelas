@@ -16,6 +16,7 @@ export const Loginthunk = (username, password) => {
             .then((res) => {
 
                 if (res.data.length) {
+                    window.location.reload()
                     Axios.get(`${APIURL}orders?userId=${res.data[0].id}`)
                         .then((res2) => {
                             console.log(res2.data)
@@ -33,7 +34,6 @@ export const Loginthunk = (username, password) => {
                         title: 'Login Berhasil',
                         showConfirmButton: false,
                         timer: 1500
-                        // // footer: '<a href>Why do I have this issue?</a>'
                     })
                 } else {
                     dispatch({ type: 'LOGIN_ERROR', payload: 'Salah Masukin Password' })

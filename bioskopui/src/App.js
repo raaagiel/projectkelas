@@ -16,12 +16,13 @@ import Register from './pages/register';
 import Cart from './pages/cart';
 import Notfound from './pages/notfound';
 import Changepass from './pages/changepass';
+import History from './pages/history'
+import managestudio from './pages/managestudio';
 
 class App extends Component {
   state = {
     loading: true,
     keranjang: []
-    // keranjang: '',
   }
 
   componentDidMount() {
@@ -49,38 +50,6 @@ class App extends Component {
     // console.log(this.props.keranjang)
   }
 
-  // Axios.get(`${APIURL}orders?_expand=movie&userId=${id}&bayar=false`)
-  //   .then((res) => {
-  //     // this.setState({ datacart: res.data })
-  //     var datacart = res.data
-  //     var qtyarr = []
-  //     // console.log(res.data)
-  //     res.data.forEach(element => {
-  //       qtyarr.push(Axios.get(`${APIURL}ordersDetails?orderId=${element.id}`))
-  //     })
-  //     var qtyarrfinal = []
-  //     Axios.all(qtyarr)
-  //       .then((res1) => {
-  //         res1.forEach((val) => {
-  //           qtyarrfinal.push(val.data)
-  //         })
-  //         // console.log(qtyarrfinal)
-  //         var datafinal = []
-  //         datacart.forEach((val, index) => {
-  //           datafinal.push({ ...val, qty: qtyarrfinal[index] })
-  //         })
-  //         // console.log(datafinal)
-  //         this.setState({
-  //           keranjang: datafinal
-  //         })
-  //       }).catch((err1) => {
-  //         console.log(err1)
-  //       })
-  //   }).catch((err) => {
-  //     console.log(err)
-  //   })
-
-
   render() {
     this.props.keranjangAction(this.state.keranjang.length)
     if (this.state.loading) {
@@ -106,7 +75,8 @@ class App extends Component {
           <Route path='/cart' exact component={Cart} />
           <Route path={'/register'} exact component={Register} />
           <Route path={'/changepass'} exact component={Changepass} />
-
+          <Route path={'/history'} exact component={History} />
+          <Route path={'/managestudio'} exact component={managestudio} />
           <Route path='/*' exact component={Notfound} />
         </Switch>
       </div>

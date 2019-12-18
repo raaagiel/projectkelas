@@ -36,35 +36,9 @@
       "id": 1,
       "nama": "Studio 1",
       "jumlahKursi": 260
-    },
-    {
-      "id": 2,
-      "nama": "Studio 2",
-      "jumlahKursi": 240
-    },
-    {
-      "id": 3,
-      "nama": "Studio 3",
-      "jumlahKursi": 200
     }
   ],
   "movies": [
-    {
-      "title": "The Best Way to Walk",
-      "image": "https://img.yts.lt/assets/images/movies/the_best_way_to_walk_1976/medium-cover.jpg",
-      "sinopsis": "In a vacation camp somewhere in the French country, 1960. Marc et Philippe are two of the counsellors. Marc is very virile, while Philippe is more reserved. A night, Marc surprises Philippe dressed and made-up like a woman. From now on, he will keep on humiliating Philippe...",
-      "sutradara": "Claude Miller",
-      "genre": "Action",
-      "durasi": "120",
-      "produksi": "RANS ENTERTAINMENT",
-      "jadwal": [
-        16,
-        20
-      ],
-      "trailer": "https://www.youtube.com/embed/0-nsSw-TI5Y",
-      "studioId": "3",
-      "id": 4
-    },
     {
       "title": "Nacho Libre",
       "image": "https://img.yts.lt/assets/images/movies/nacho_libre_2006/medium-cover.jpg",
@@ -100,123 +74,47 @@
   "orders": [
     {
       "userId": 4,
-      "movieId": 5,
-      "totalharga": 50000,
-      "jadwal": 12,
-      "bayar": false,
-      "id": 7
-    },
-    {
-      "userId": 4,
-      "movieId": 5,
+      "movieId": 6,
       "totalharga": 25000,
-      "jadwal": 18,
+      "jadwal": 12,
       "bayar": false,
-      "id": 8
+      "id": 1
     },
     {
       "userId": 4,
-      "movieId": 6,
+      "movieId": 4,
       "totalharga": 75000,
-      "jadwal": 12,
+      "jadwal": 20,
       "bayar": false,
-      "id": 9
-    },
-    {
-      "userId": 4,
-      "movieId": 6,
-      "totalharga": 50000,
-      "jadwal": 12,
-      "bayar": false,
-      "id": 10
-    },
-    {
-      "userId": 4,
-      "movieId": 5,
-      "totalharga": 125000,
-      "jadwal": 16,
-      "bayar": false,
-      "id": 11
+      "id": 2
     }
   ],
   "ordersDetails": [
     {
-      "orderId": 7,
+      "orderId": 1,
+      "seat": 9,
+      "row": 4,
+      "id": 1
+    },
+    {
+      "orderId": 2,
+      "seat": 9,
+      "row": 0,
+      "id": 2
+    },
+    {
+      "orderId": 2,
       "seat": 10,
+      "row": 0,
+      "id": 3
+    },
+    {
+      "orderId": 2,
+      "seat": 11,
       "row": 0,
       "id": 4
-    },
-    {
-      "orderId": 8,
-      "seat": 10,
-      "row": 0,
-      "id": 5
-    },
-    {
-      "orderId": 9,
-      "seat": 8,
-      "row": 2,
-      "id": 6
-    },
-    {
-      "orderId": 9,
-      "seat": 9,
-      "row": 2,
-      "id": 7
-    },
-    {
-      "orderId": 9,
-      "seat": 10,
-      "row": 2,
-      "id": 8
-    },
-    {
-      "orderId": 10,
-      "seat": 13,
-      "row": 2,
-      "id": 9
-    },
-    {
-      "orderId": 10,
-      "seat": 14,
-      "row": 2,
-      "id": 10
-    },
-    {
-      "orderId": 11,
-      "seat": 9,
-      "row": 1,
-      "id": 11
-    },
-    {
-      "orderId": 11,
-      "seat": 10,
-      "row": 1,
-      "id": 12
-    },
-    {
-      "orderId": 11,
-      "seat": 11,
-      "row": 1,
-      "id": 13
-    },
-    {
-      "orderId": 11,
-      "seat": 12,
-      "row": 1,
-      "id": 14
-    },
-    {
-      "orderId": 11,
-      "seat": 13,
-      "row": 1,
-      "id": 15
     }
   ],
-  "transactions": [
-    {}
-  ],
-  "transactionsDetails": [
-    {}
-  ]
+  "transactions": [],
+  "transactionsDetails": []
 }

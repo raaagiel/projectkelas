@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 class Notfound extends Component {
     render() {
         return (
-            <div id="error-page" className='mt-10'>
+            <div id="error-page" style={{ marginTop: '100px' }}>
                 <div id="error-inner">
                     <h1> I told you to text your mom</h1>
                     <Link to='/'>

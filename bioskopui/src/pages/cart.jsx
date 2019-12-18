@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import Axios from 'axios'
 import { connect } from 'react-redux'
 import { APIURL } from './../support/apiurl'
-import { Icon, Menu, Table, Popup, Button } from 'semantic-ui-react'
+import { Icon, Table, Popup, Button } from 'semantic-ui-react'
 import { totalHargaAction } from '../redux/actions'
+import { Redirect, Link } from 'react-router-dom'
+
 // import { Button } from '@material-ui/core'
 // import { Table, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 // import { element } from 'prop-types'
@@ -13,6 +15,7 @@ class Cart extends Component {
         datacart: null,
         // indexdetail: 0,
         totalharga: 0,
+        redirecthistory: false,
         detailSeat: []
 
     }
@@ -73,8 +76,8 @@ class Cart extends Component {
                         <Table.Cell>Rp. {val.totalharga}</Table.Cell>
 
                         <Table.Cell>
-                            <Popup
-                                position='right center'
+                            <Popup fixed
+                                position='top right'
                                 content={<Table singleLine color='teal' inverted>
                                     <Table.Header>
                                         <Table.Row>
@@ -96,7 +99,7 @@ class Cart extends Component {
                                 </Table>}
                                 on='click'
                                 pinned
-                                trigger={<Button floated='right' color='instagram' size='tiny' onClick={() => this.btnDetail(index)}>Detail</Button>
+                                trigger={<Button floated='right' color='teal' size='tiny' onClick={() => this.btnDetail(index)}>Detail</Button>
                                 }
                             />
                         </Table.Cell>
@@ -130,14 +133,41 @@ class Cart extends Component {
             })
     }
 
+    bayarcheckout = () => {
+        var pesanan = this.state.datacart
+        for (var i = 0; i < pesanan.length; i++) {
+            var data = {
+                userId: pesanan[i].userId,
+                movieId: pesanan[i].movieId,
+                jadwal: pesanan[i].jadwal,
+                totalHarga: pesanan[i].totalHarga,
+                bayar: true,
+                id: pesanan[i].id
+            }
+            var id = data.id
+            // console.log(data)
+            Axios.put(`${APIURL}orders/${id}`, data)
+                .then(res => {
+                    this.componentDidMount()
+                }).catch(err => {
+                    console.log(err)
+                })
+        }
+        this.setState({ modalcheckout: false })
+    }
+
     render() {
         this.props.totalHargaAction(this.state.totalharga)
         if (this.props.UserId) {
+            if (this.state.redirecthistory) {
+                return <Redirect to={'/history'} />
+            }
             return (
                 <div className='mt-5 '>
                     <center>
-                        <Table color='black' inverted celled style={{ width: '70%', height: '100px' }} >
+                        <Table color='pink' inverted celled style={{ width: '70%', height: '100px' }} >
                             <Table.Header>
+                                <h1>Cart</h1>
                                 <Table.Row  >
                                     <Table.HeaderCell >No.</Table.HeaderCell>
                                     <Table.HeaderCell >Title</Table.HeaderCell>
@@ -154,8 +184,8 @@ class Cart extends Component {
                             <Table.Footer>
                                 <Table.Row>
                                     <Table.HeaderCell colSpan='6' floated='center'>
-                                        <Button size='tiny' animated='vertical' color='instagram' inverted style={{ marginLeft: '841px' }}>
-                                            <Button.Content hidden>Checkout</Button.Content>
+                                        <Button size='tiny' animated='vertical' color='teal' inverted style={{ marginLeft: '841px' }}>
+                                            <Button.Content hidden as={Link} to='/history' onClick={this.bayarcheckout}>Checkout</Button.Content>
                                             <Button.Content visible>
                                                 <Icon name='shop' />Total Rp {this.props.totalharga}
                                             </Button.Content>

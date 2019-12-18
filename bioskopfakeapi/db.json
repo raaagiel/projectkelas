@@ -35,7 +35,17 @@
     {
       "id": 1,
       "nama": "Studio 1",
-      "jumlahKursi": 260
+      "jumlahKursi": 220
+    },
+    {
+      "nama": "Studio 2",
+      "jumlahKursi": 220,
+      "id": 2
+    },
+    {
+      "nama": "Studio 3",
+      "jumlahKursi": 220,
+      "id": 3
     }
   ],
   "movies": [
@@ -69,30 +79,77 @@
       "trailer": "https://www.youtube.com/embed/P-WCCdkVDr4",
       "studioId": "1",
       "id": 6
+    },
+    {
+      "title": "Joker",
+      "image": "https://img.yts.lt/assets/images/movies/joker_2019/medium-cover.jpg",
+      "sinopsis": "Joker centers around an origin of the iconic arch nemesis and is an original, standalone story not seen before on the big screen. Todd Phillips' exploration of Arthur Fleck (Joaquin Phoenix), a man disregarded by society is not only a gritty character study, but also a broader cautionary tale.",
+      "sutradara": "Todd Phillips",
+      "genre": "Crime / Drama / Thriller",
+      "durasi": "122",
+      "produksi": "",
+      "jadwal": [
+        16,
+        20,
+        22
+      ],
+      "trailer": "https://www.youtube.com/embed/zAGVQLHvwOY",
+      "studioId": "1",
+      "id": 7
+    },
+    {
+      "title": "Following",
+      "image": "https://img.yts.lt/assets/images/movies/following_1998/medium-cover.jpg",
+      "sinopsis": "An older man listens to Bill's story about being a callow writer who likes to follow strangers around London, observing them. One day, a glib and self-confident man whom Bill has been following confronts him. He's Cobb, a burglar who takes Bill under his wing and shows him how to break and enter. They burgle a woman's flat; Bill gets intrigued with her (photographs are everywhere in her flat). He follows her and chats her up at a bar owned by her ex-boyfriend, a nasty piece of work who killed someone in her living room with a hammer. Soon Bill is volunteering to do her a favor, which involves a break-in. What does the older man know that Bill doesn't?",
+      "sutradara": "Christopher Nolan",
+      "genre": "Action / Crime / Mystery / Thriller",
+      "durasi": "90",
+      "produksi": "",
+      "jadwal": [
+        16,
+        18
+      ],
+      "trailer": "https://www.youtube.com/embed/RHRnYeZL5Pc",
+      "studioId": "2",
+      "id": 8
     }
   ],
   "orders": [
     {
       "userId": 4,
-      "movieId": 6,
-      "totalharga": 50000,
-      "jadwal": 18,
+      "movieId": 7,
+      "totalharga": 25000,
+      "jadwal": 12,
       "bayar": false,
       "id": 1
+    },
+    {
+      "userId": 4,
+      "movieId": 7,
+      "totalharga": 50000,
+      "jadwal": 20,
+      "bayar": false,
+      "id": 2
     }
   ],
   "ordersDetails": [
     {
       "orderId": 1,
       "seat": 9,
-      "row": 4,
+      "row": 0,
       "id": 1
     },
     {
-      "orderId": 1,
+      "orderId": 2,
       "seat": 10,
-      "row": 4,
+      "row": 0,
       "id": 2
+    },
+    {
+      "orderId": 2,
+      "seat": 11,
+      "row": 0,
+      "id": 3
     }
   ],
   "transactions": [],

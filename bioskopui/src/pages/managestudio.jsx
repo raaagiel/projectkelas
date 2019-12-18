@@ -6,6 +6,8 @@ import Fade from "react-reveal/Fade";
 import Axios from "axios";
 import { APIURL } from "../support/apiurl";
 import Swal from "sweetalert2";
+import Notfound from './../pages/notfound';
+
 
 class Managestudio extends Component {
     state = {
@@ -127,14 +129,12 @@ class Managestudio extends Component {
                 <TableRow key={index}>
                     <TableCell>{index + 1}</TableCell>
                     <TableCell>{val.nama}</TableCell>
-                    <TableCell>{val.jumlahKursi}</TableCell>
+                    <TableCell>{val.jumlahKursi} kursi</TableCell>
                     <TableCell>
-                        <button onClick={() => this.onClickEditStudio(index)} className="btn btn-dark mr-3">
-                            Edit
-            </button>
-                        <button onClick={() => this.onClickdeleteStudio(index)} className="btn btn-outline-dark">
-                            Delete
-            </button>
+                        <button onClick={() => this.onClickEditStudio(index)} className="btn btn-success mr-3">Edit</button>
+                        <button onClick={() => this.onClickdeleteStudio(index)} className="btn btn-outline-danger">Delete</button>
+                        {/* <button className="btn btn-success" style={{ margin: "10px" }} onClick={() => this.setState({ modaladd: true })}>{" "}Add Data</button> */}
+
                     </TableCell>
                 </TableRow>
             );
@@ -149,10 +149,11 @@ class Managestudio extends Component {
         // console.log(this.state.datastudio,'asdasdas')
         else {
             if (this.props.role !== "admin") {
-                return <div> error</div>;
+                return <div><Notfound /></div>;
             } else {
                 return (
                     <div>
+                        {/* <center> */}
                         {indexEdit === -1 ? null : (
                             <Modal isOpen={this.state.modaledit} toggle={() => this.setState({ modaledit: false })}>
                                 <ModalHeader>EDIT STUDIOS</ModalHeader>
@@ -161,7 +162,7 @@ class Managestudio extends Component {
                                     <input type="number" defaultValue={datastudio[indexEdit].jumlahKursi} className="form-control inputaddstudio" ref="jumlahKursi" placeholder="jumlah kursi" />
                                 </ModalBody>
                                 <ModalFooter>
-                                    <button type="button" className="btn btn-outline-dark" onClick={this.onClickSaveStudio}>Save</button>
+                                    <button type="button" className="btn btn-success" onClick={this.onClickSaveStudio}>Save</button>
                                 </ModalFooter>
                             </Modal>
                         )}
@@ -173,25 +174,26 @@ class Managestudio extends Component {
                                 <input type="number" className="form-control inputaddstudio" ref="kursi" placeholder="jumlah kursi" />
                             </ModalBody>
                             <ModalFooter>
-                                <button type="button" className="btn btn-outline-dark" onClick={this.onClickAddStudio}>Submit</button>
+                                <button type="button" className="btn btn-outline-success" onClick={this.onClickAddStudio}>Submit</button>
                             </ModalFooter>
                         </Modal>
 
-                        <button className="btn btn-success" style={{ margin: "10px" }} onClick={() => this.setState({ modaladd: true })}>{" "}add Data</button>
+                        <button className="btn btn-success" style={{ margin: "10px" }} onClick={() => this.setState({ modaladd: true })}>{" "}Add Data</button>
                         <Fade>
-                            {/* <button className='btn btn-success' onClick={()=>this.setState({modaladd:true})}> add Data</button> */}
                             <Table size="small">
                                 <TableHead>
                                     <TableRow>
                                         <TableCell>No.</TableCell>
-                                        <TableCell>Nama</TableCell>
+                                        <TableCell>Nama Studio</TableCell>
                                         <TableCell>Jumlah Kursi</TableCell>
                                         <TableCell>Action</TableCell>
+                                        <TableCell></TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>{this.renderstudios()}</TableBody>
                             </Table>
                         </Fade>
+                        {/* </center> */}
                     </div>
                 );
             }

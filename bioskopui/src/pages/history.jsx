@@ -45,25 +45,28 @@ class History extends Component {
     render() {
         return (
             <div>
-                <Table fixed>
-                    <Table.Header>
-                        <Table.Row>
-                            <Table.HeaderCell>No.</Table.HeaderCell>
-                            <Table.HeaderCell>Title</Table.HeaderCell>
-                            <Table.HeaderCell>Jadwal</Table.HeaderCell>
-                            <Table.HeaderCell>Total Harga</Table.HeaderCell>
-                        </Table.Row>
-                    </Table.Header>
+                <center>
+                    <Table fixed color='teal' inverted celled style={{ width: '50%', marginTop: '50px' }}>
+                        <Table.Header>
+                            <h1>History</h1>
+                            <Table.Row>
+                                <Table.HeaderCell>No.</Table.HeaderCell>
+                                <Table.HeaderCell>Title</Table.HeaderCell>
+                                <Table.HeaderCell>Jadwal</Table.HeaderCell>
+                                <Table.HeaderCell>Total Harga</Table.HeaderCell>
+                            </Table.Row>
+                        </Table.Header>
 
-                    <Table.Body>
-                        <Table.Row>
-                            <Table.Cell>1</Table.Cell>
-                            <Table.Cell>2</Table.Cell>
-                            <Table.Cell>3</Table.Cell>
-                            <Table.Cell>{this.props.totalharga}</Table.Cell>
-                        </Table.Row>
-                    </Table.Body>
-                </Table>
+                        <Table.Body>
+                            <Table.Row>
+                                <Table.Cell>1</Table.Cell>
+                                <Table.Cell>2</Table.Cell>
+                                <Table.Cell>3</Table.Cell>
+                                <Table.Cell>{this.props.totalharga}</Table.Cell>
+                            </Table.Row>
+                        </Table.Body>
+                    </Table>
+                </center>
             </div>
         )
     }

@@ -6,6 +6,8 @@ import { Redirect } from 'react-router-dom'
 import { Modal, ModalBody, ModalFooter } from 'reactstrap'
 import Numeral from 'numeral'
 import { keranjangAction } from './../redux/actions'
+import Notfound from './../pages/notfound';
+
 // import { Link } from 'react-router-dom'
 
 // import Cart from './pages/cart';
@@ -222,67 +224,73 @@ class Belitiket extends Component {
         })
     }
 
+
     render() {
-        if (this.props.location.state && this.props.AuthLog) {
-            if (this.state.redirecthome) {
-                return <Redirect to={'/'} />
-            }
-            return (
-                <div>
-                    <Modal isOpen={this.state.openmodalcart}>
-                        <ModalBody>
-                            Berhasil Ditambahkan
+        if (this.props.role === 'user') {
+
+            if (this.props.location.state && this.props.AuthLog) {
+                if (this.state.redirecthome) {
+                    return <Redirect to={'/'} />
+                }
+                return (
+                    <div>
+                        <Modal isOpen={this.state.openmodalcart}>
+                            <ModalBody>
+                                Berhasil Ditambahkan
                         </ModalBody>
-                        <ModalFooter >
-                            {/* <Link to='/'> */}
-                            <button className='btn btn-primary mr-2' onClick={this.onClickOkOrder}>Ok</button>
-                            {/* </Link> */}
-                        </ModalFooter>
-                    </Modal>
-                    <center className='mt-1'>
-                        <div>
-                            {this.state.datamovie.title}
-                        </div>
-
-                        {this.state.loading ? null : this.renderbutton()}
-
-                        <div style={{ justifyContent: 'center' }}>
-
+                            <ModalFooter >
+                                {/* <Link to='/'> */}
+                                <button className='btn btn-primary mr-2' onClick={this.onClickOkOrder}>Ok</button>
+                                {/* </Link> */}
+                            </ModalFooter>
+                        </Modal>
+                        <center className='mt-1'>
                             <div>
-                                {this.state.pilihan.length ? <button onClick={this.onOrderClick} className='btn btn-primary mr-20 mt-2'>Book Now</button>
-                                    : null}
+                                {this.state.datamovie.title}
+                            </div><br />
+
+                            {this.state.loading ? null : this.renderbutton()}
+
+                            <div style={{ justifyContent: 'center' }}>
+
+                                <div>
+                                    {this.state.pilihan.length ? <button onClick={this.onOrderClick} className='btn btn-primary mr-20 mt-2'>Book Now</button>
+                                        : null}
+                                </div>
+                                <div>
+                                    {this.state.pilihan.length ? <button onClick={this.btnReset} className='btn btn-primary mt-2'>Reset</button>
+                                        : null}
+                                </div>
+                                {this.state.pilihan.length ?
+                                    this.renderHargaQuantity()
+                                    :
+                                    null
+                                }
                             </div>
+                            <div className='d-flex justify-content-center mt-4'></div>
                             <div>
-                                {this.state.pilihan.length ? <button onClick={this.btnReset} className='btn btn-primary mt-2'>Reset</button>
-                                    : null}
+                                {this.state.loading ? null : this.renderseat()}
                             </div>
-                            {this.state.pilihan.length ?
-                                this.renderHargaQuantity()
-                                :
-                                null
-                            }
-                        </div>
-                        <div className='d-flex justify-content-center mt-4'></div>
-                        <div>
-                            {this.state.loading ? null : this.renderseat()}
-                        </div>
-                        <div style={{ height: '20px', backgroundColor: 'black', color: 'white', textAlign: 'center', marginTop: "10px" }} >Layar </div>
-                    </center>
-                </div >
-            )
+                            <div style={{ width: '70%', height: '20px', backgroundColor: 'black', color: 'white', textAlign: 'center', marginTop: "10px" }} >Layar </div>
+                        </center>
+                    </div >
+                )
+            }
         }
         return (
             <div>
-                404 Not Found
+                <Notfound />
             </div>
         )
+
     }
 }
 
 const MapstateToprops = (state) => {
     return {
         AuthLog: state.Auth.login,
-        UserId: state.Auth.id
+        UserId: state.Auth.id,
+        role: state.Auth.role
     }
 }
 export default connect(MapstateToprops, { keranjangAction })(Belitiket)

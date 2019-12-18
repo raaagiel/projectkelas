@@ -48,7 +48,7 @@ class Login extends Component {
                                 width={100}
                             />
                             :
-                            <Button color='instagram' type='submit' onClick={this.onLoginClick}>Login</Button>
+                            <Button color='teal' type='submit' onClick={this.onLoginClick}>Login</Button>
                         }
                     </Form>
                 </div>

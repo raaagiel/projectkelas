@@ -78,7 +78,7 @@ class Register extends Component {
                         <label>Confirm Password</label>
                         <input ref='cnfrmpass' type='password' placeholder='password' />
                     </Form.Field>
-                    <Button color='instagram' type='submit' onClick={this.onclickRegister}>Register</Button>
+                    <Button color='teal' type='submit' onClick={this.onclickRegister}>Register</Button>
                 </Form>
             </div >
         )

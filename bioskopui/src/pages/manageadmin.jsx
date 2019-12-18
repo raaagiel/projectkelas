@@ -6,6 +6,10 @@ import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap'
 import Fade from 'react-reveal/Fade'
 import Swal from 'sweetalert2'
 import { Button, Icon } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import Notfound from './../pages/notfound';
+
+
 
 // import withReactContent from 'sweetalert2-react-content'
 
@@ -273,100 +277,114 @@ class ManageAdmin extends Component {
         })
     }
     render() {
-        const { datafilm, indexedit } = this.state
-        const { length } = datafilm
-        if (length === 0) {
-            return <div>loading</div>
+        if (this.props.role === 'admin') {
+
+            const { datafilm, indexedit } = this.state
+            const { length } = datafilm
+            if (length === 0) {
+                return <div>loading</div>
+            }
+            return (
+                <div className='mx-3'>
+                    <Modal isOpen={this.state.modaledit} toggle={() => this.setState({ modaledit: false })}>
+                        <ModalHeader>
+                            Edit Data {datafilm[indexedit].title}
+                        </ModalHeader>
+                        <ModalBody>
+                            <input type="text" defaultValue={datafilm[indexedit].title} ref='edittitle' placeholder='title' className='form-control mt-2' />
+                            <input type="text" defaultValue={datafilm[indexedit].image} ref='editimage' placeholder='image' className='form-control mt-2' />
+                            <textarea rows='5' ref='editsinopsis' defaultValue={datafilm[indexedit].sinopsis} placeholder='sinopsis' className='form-control mt-2 mb-2' />
+                            Jadwal:
+                        <div className="d-flex">
+                                {this.renderEditCheckbox(indexedit)}
+                            </div>
+                            <input type="text" defaultValue={datafilm[indexedit].trailer} ref='edittrailer' placeholder='trailer' className='form-control mt-2' />
+                            <select ref='editstudio' className='form-control mt-2'>
+                                <option value="1">Studio 1</option>
+                                <option value="2">Studio 2</option>
+                                <option value="3">Studio 3</option>
+                            </select>
+                            <input type="text" defaultValue={datafilm[indexedit].sutradara} ref='editsutradara' placeholder='sutradara' className='form-control mt-2' />
+                            <input type="number" defaultValue={datafilm[indexedit].durasi} ref='editdurasi' placeholder='durasi' className='form-control mt-2' />
+                            <input type="text" defaultValue={datafilm[indexedit].genre} ref='editgenre' placeholder='genre' className='form-control mt-2' />
+                        </ModalBody>
+                        <ModalFooter>
+                            <button onClick={this.onUpdateDataclick} >Save</button>
+                            <button onClick={() => this.setState({ modaledit: false })}>Cancel</button>
+                        </ModalFooter>
+                    </Modal>
+                    <Modal isOpen={this.state.modaladd} toggle={() => this.setState({ modaladd: false })}>
+                        {/* <ModalHeader >
+                        Add Data
+                    </ModalHeader> */}
+                        <ModalBody>
+                            <input type="text" ref='title' placeholder='title' className='form-control mt-2' />
+                            <input type="text" ref='image' placeholder='image' className='form-control mt-2' />
+                            <input type="text" ref='sinopsis' placeholder='sinopsis' className='form-control mt-2 mb-2' />
+                            Jadwal:
+                        <div className="d-flex">
+                                {this.renderAddCheckbox()}
+                            </div>
+                            <input type="text" ref='trailer' placeholder='trailer' className='form-control mt-2' />
+                            <select ref='studio' className='form-control mt-2'>
+
+                                {
+                                    this.state.datastudio.map((val) => {
+                                        return (
+                                            <option value={val.id}>{val.studios}</option>
+                                        )
+                                    })
+                                }
+
+                                {/* <option value="1">Studio 1</option>
+                            <option value="2">Studio 2</option>
+                        <option value="3">Studio 3</option> */}
+                            </select>
+                            <input type="text" ref='sutradara' placeholder='sutradara' className='form-control mt-2' />
+                            <input type="number" ref='durasi' placeholder='durasi' className='form-control mt-2' />
+                            <input type="text" ref='genre' placeholder='genre' className='form-control mt-2' />
+                        </ModalBody>
+                        <ModalFooter>
+                            <button onClick={this.onSaveAddDataClick}>Save</button>
+                            <button onClick={() => this.setState({ modaladd: false })}>Cancel</button>
+                        </ModalFooter>
+                    </Modal>
+                    <Fade>
+                        <center>
+                            <button className='btn btn-success mt-2' onClick={() => this.setState({ modaladd: true })}> Add Data</button>
+                        </center> <br />
+                        <Table size='small' >
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>No.</TableCell>
+                                    <TableCell>Judul</TableCell>
+                                    <TableCell>Image</TableCell>
+                                    <TableCell>Sinopsis</TableCell>
+                                    <TableCell>Jadwal</TableCell>
+                                    <TableCell>Studio</TableCell>
+                                    <TableCell>Genre</TableCell>
+                                    <TableCell>Durasi </TableCell>
+                                    <TableCell>Action</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {this.renderMovies()}
+                            </TableBody>
+                        </Table>
+                    </Fade>
+                </div>
+            );
         }
         return (
-            <div className='mx-3'>
-                <Modal isOpen={this.state.modaledit} toggle={() => this.setState({ modaledit: false })}>
-                    <ModalHeader>
-                        Edit Data {datafilm[indexedit].title}
-                    </ModalHeader>
-                    <ModalBody>
-                        <input type="text" defaultValue={datafilm[indexedit].title} ref='edittitle' placeholder='title' className='form-control mt-2' />
-                        <input type="text" defaultValue={datafilm[indexedit].image} ref='editimage' placeholder='image' className='form-control mt-2' />
-                        <textarea rows='5' ref='editsinopsis' defaultValue={datafilm[indexedit].sinopsis} placeholder='sinopsis' className='form-control mt-2 mb-2' />
-                        Jadwal:
-                        <div className="d-flex">
-                            {this.renderEditCheckbox(indexedit)}
-                        </div>
-                        <input type="text" defaultValue={datafilm[indexedit].trailer} ref='edittrailer' placeholder='trailer' className='form-control mt-2' />
-                        <select ref='editstudio' className='form-control mt-2'>
-                            <option value="1">Studio 1</option>
-                            <option value="2">Studio 2</option>
-                            <option value="3">Studio 3</option>
-                        </select>
-                        <input type="text" defaultValue={datafilm[indexedit].sutradara} ref='editsutradara' placeholder='sutradara' className='form-control mt-2' />
-                        <input type="number" defaultValue={datafilm[indexedit].durasi} ref='editdurasi' placeholder='durasi' className='form-control mt-2' />
-                        <input type="text" defaultValue={datafilm[indexedit].genre} ref='editgenre' placeholder='genre' className='form-control mt-2' />
-                    </ModalBody>
-                    <ModalFooter>
-                        <button onClick={this.onUpdateDataclick} >Save</button>
-                        <button onClick={() => this.setState({ modaledit: false })}>Cancel</button>
-                    </ModalFooter>
-                </Modal>
-                <Modal isOpen={this.state.modaladd} toggle={() => this.setState({ modaladd: false })}>
-                    <ModalHeader>
-                        Add Data
-                    </ModalHeader>
-                    <ModalBody>
-                        <input type="text" ref='title' placeholder='title' className='form-control mt-2' />
-                        <input type="text" ref='image' placeholder='image' className='form-control mt-2' />
-                        <input type="text" ref='sinopsis' placeholder='sinopsis' className='form-control mt-2 mb-2' />
-                        Jadwal:
-                        <div className="d-flex">
-                            {this.renderAddCheckbox()}
-                        </div>
-                        <input type="text" ref='trailer' placeholder='trailer' className='form-control mt-2' />
-                        <select ref='studio' className='form-control mt-2'>
+            <div>
+                <Notfound />
+            </div>)
+    }
 
-                            {
-                                this.state.datastudio.map((val) => {
-                                    return (
-                                        <option value={val.id}>{val.studios}</option>
-                                    )
-                                })
-                            }
-
-                            {/* <option value="1">Studio 1</option>
-                            <option value="2">Studio 2</option>
-                            <option value="3">Studio 3</option> */}
-                        </select>
-                        <input type="text" ref='sutradara' placeholder='sutradara' className='form-control mt-2' />
-                        <input type="number" ref='durasi' placeholder='durasi' className='form-control mt-2' />
-                        <input type="text" ref='genre' placeholder='genre' className='form-control mt-2' />
-                    </ModalBody>
-                    <ModalFooter>
-                        <button onClick={this.onSaveAddDataClick}>Save</button>
-                        <button onClick={() => this.setState({ modaladd: false })}>Cancel</button>
-                    </ModalFooter>
-                </Modal>
-                <Fade>
-                    <button className='btn btn-success mt-2' onClick={() => this.setState({ modaladd: true })}> Add Data</button>
-                    <Table size='small' >
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>No.</TableCell>
-                                <TableCell>Judul</TableCell>
-                                <TableCell>Image</TableCell>
-                                <TableCell>Sinopsis</TableCell>
-                                <TableCell>Jadwal</TableCell>
-                                <TableCell>Studio</TableCell>
-                                <TableCell>Genre</TableCell>
-                                <TableCell>Durasi </TableCell>
-                                <TableCell>Action</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {this.renderMovies()}
-                        </TableBody>
-                    </Table>
-                </Fade>
-            </div>
-        );
+}
+const MapstateToprops = (state) => {
+    return {
+        role: state.Auth.role
     }
 }
-
-export default ManageAdmin;
+export default connect(MapstateToprops)(ManageAdmin);

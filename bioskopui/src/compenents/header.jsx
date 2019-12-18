@@ -62,9 +62,9 @@ const Header = (props) => {
                     <Icon name='user circle' size='large' className='mr-2' />hai, {props.namauser}
                   </DropdownToggle>
                   <DropdownMenu right>
-                    <DropdownItem href='/manageadmin'>Manage Admin</DropdownItem>
-                    <DropdownItem href='/managestudio'>Manage Studio</DropdownItem>
-                    <DropdownItem href={'/'} onClick={Logoutbtn}>Logout </DropdownItem>
+                    <DropdownItem href='/manageadmin'><Icon name='address book' /> Manage Admin</DropdownItem>
+                    <DropdownItem href='/managestudio'><Icon name='file video' />Manage Studio</DropdownItem>
+                    <DropdownItem href={'/'} onClick={Logoutbtn}><Icon name='paper plane outline' />Logout </DropdownItem>
                   </DropdownMenu>
                 </UncontrolledDropdown>
               )
